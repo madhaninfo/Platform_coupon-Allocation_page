@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 // import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -61,22 +64,39 @@ public class CouponCreate {
                                                                                                         // button
             CouponListing.click();
             Thread.sleep(3000);
+            // >>>>>>>>>>>>>>>>>>>>>>>> BUTTON HOVER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement Action = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[3]/div[2]/div/div[1]/div/ul/li[1]/button/i")));
 
-            WebElement Action = driver.findElement(By.xpath("/html/body/div[3]/div[2]/div/div[1]/div/ul/li[1]/button/i"));
-            Action.click();
-            Thread.sleep(3000);
-                    // Create an instance of Actions class
+
         Actions actions = new Actions(driver);
 
         // Perform hover action on the button
         actions.moveToElement(Action).perform();
+        Thread.sleep(3000);
 
-            WebElement AddCoupon = driver.findElement(By.xpath("//div[2]/div/div/div/ul/li/ul/li/a"));
+            WebElement AddCoupon = driver.findElement(By.xpath("/html/body/div[3]/div[2]/div/div[1]/div/ul/li[1]/ul/li[1]/a"));
             AddCoupon.click();
-           
-         
 
-
+            WebElement Radio = driver.findElement(By.xpath("/html/body/div[3]/div[2]/div/div[2]/div/div/div[2]/form/div[1]/div[4]/div/div[2]/label/div/span/input"));
+            Radio.click();
+            WebElement CouponName = driver.findElement(By.id("campaignNames0"));
+            CouponName.sendKeys("12345678");
+            CouponName.click();
+          
+            Thread.sleep(3000);
+            WebElement CouponDescription = driver.findElement(By.id("campaignDescs0"));
+            CouponDescription.sendKeys("12345678");
+            CouponDescription.click();
+            WebElement CouponStartDate = driver.findElement(By.id("startDate"));
+            CouponStartDate.click();
+            WebElement CouponDatePicker = driver.findElement(By.xpath("//div[10]/div/table/tbody/tr[2]/td[3]"));
+            CouponDatePicker.click();
+            WebElement CouponExpiryDate = driver.findElement(By.id("expiryDate"));
+            CouponExpiryDate.click();
+            WebElement CouponDatePickers = driver.findElement(By.xpath("//div[10]/div/table/thead/tr/th[2]"));
+            CouponDatePickers.click();
+            
  //button/span
             driver.close();
 
