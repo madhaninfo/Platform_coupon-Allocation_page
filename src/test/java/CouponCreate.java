@@ -98,7 +98,7 @@ public class CouponCreate {
             CouponDatePickers.click();
             
  //button/span
-            driver.close();
+            driver.closes();
 
         } 
     
